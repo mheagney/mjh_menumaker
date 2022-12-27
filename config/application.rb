@@ -18,5 +18,15 @@ module MenuMaker
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.to_prepare do
+      # Optional: Ensure that Routes and therefore Controller mixins like authenticate_user! are defined before autoloading Controllers
+      Rails.application.reload_routes!
+
+      Devise::SessionsController.layout "devise"
+      Devise::RegistrationsController.layout proc { |controller| user_signed_in? ? "application" : "devise" }
+      Devise::ConfirmationsController.layout "devise"
+      Devise::UnlocksController.layout "devise"
+      Devise::PasswordsController.layout "devise"
+    end
   end
 end

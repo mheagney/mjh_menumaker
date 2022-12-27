@@ -10,13 +10,6 @@
     <%= javascript_importmap_tags %>
   </head>
   <body>
-    <div x-data="{menu: false}" class="min-h-full">
-      <%= render 'shared/nav' %>
-      <main>
-        <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
-          <%= yield %>
-        </div>
-      </main>
-    </div>
+    <%= yield %>
   </body>
 </html>

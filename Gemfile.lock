@@ -68,6 +68,9 @@ GEM
       tzinfo (~> 2.0)
     acts_as_list (1.0.4)
       activerecord (>= 4.2)
+    acts_as_price (0.3.0)
+      rails (> 3.0.7)
+      rake (> 0.8.7)
     addressable (2.8.1)
       public_suffix (>= 2.0.2, < 6.0)
     bcrypt (3.1.18)
@@ -104,6 +107,9 @@ GEM
     importmap-rails (1.1.5)
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
+    inline_svg (1.8.0)
+      activesupport (>= 3.0)
+      nokogiri (>= 1.6)
     io-console (0.6.0)
     irb (1.6.1)
       reline (>= 0.3.0)
@@ -140,6 +146,8 @@ GEM
     public_suffix (5.0.1)
     puma (5.6.5)
       nio4r (~> 2.0)
+    pundit (2.3.0)
+      activesupport (>= 3.0.0)
     racc (1.6.1)
     rack (2.2.4)
     rack-test (2.0.2)
@@ -163,6 +171,9 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.4.4)
       loofah (~> 2.19, >= 2.19.1)
+    rails_heroicon (2.1.1)
+      actionview
+      railties
     railties (7.0.4)
       actionpack (= 7.0.4)
       activesupport (= 7.0.4)
@@ -228,14 +239,18 @@ PLATFORMS
 
 DEPENDENCIES
   acts_as_list (~> 1.0)
+  acts_as_price (~> 0.3.0)
   bootsnap
   capybara
   debug
   devise (~> 4.8)
   importmap-rails
+  inline_svg (~> 1.8)
   jbuilder
   puma (~> 5.0)
+  pundit (~> 2.3)
   rails (~> 7.0.4)
+  rails_heroicon (~> 2.1)
   redis (~> 4.0)
   selenium-webdriver
   sprockets-rails

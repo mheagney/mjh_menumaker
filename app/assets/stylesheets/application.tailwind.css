@@ -2,12 +2,53 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
 
-@layer components {
-  .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
-  }
+[x-cloak] { display: none !important; }
+
+.btn {
+    @apply inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2
 }
 
-*/
+.devise-label {
+    @apply block text-sm font-medium text-gray-700
+  }
+
+  .devise-input {
+    @apply block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm
+  }
+
+  .devise-field {
+    @apply mt-4
+  }
+
+.nav-mobile-submenu {
+    @apply block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white
+}
+
+.nav-submenu {
+    @apply block px-4 py-2 text-sm text-gray-700
+}
+
+.nav-menu {
+    @apply px-3 py-2 rounded-md text-sm font-medium
+}
+
+.nav-menu-active {
+    @apply bg-gray-900 text-white
+}
+
+.nav-menu-secondary {
+    @apply text-gray-300 hover:bg-gray-700 hover:text-white
+}
+
+.nav-mobile {
+    @apply block px-3 py-2 rounded-md text-base font-medium
+}
+
+.nav-mobile-active {
+    @apply bg-gray-900 text-white
+}
+
+.nav-mobile-secondary {
+    @apply text-gray-300 hover:bg-gray-700 hover:text-white
+}

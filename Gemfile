@@ -77,3 +77,11 @@ end
 gem "devise", "~> 4.8"
 
 gem "acts_as_list", "~> 1.0"
+
+gem "acts_as_price", "~> 0.3.0"
+
+gem "pundit", "~> 2.3"
+
+gem "inline_svg", "~> 1.8"
+
+gem "rails_heroicon", "~> 2.1"
