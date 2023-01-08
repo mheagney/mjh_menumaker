@@ -6,6 +6,6 @@ class User < ApplicationRecord
 
   has_many :likes
   has_many :restaurants
-  has_many :sections
-  has_many :items
+  has_many :menus
+  has_many :business_hours, :through => :restaurants
 end

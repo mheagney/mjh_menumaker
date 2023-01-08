@@ -3,9 +3,8 @@ class CreateSections < ActiveRecord::Migration[7.0]
     create_table :sections do |t|
       t.string :title
       t.string :description
-      t.integer :order
+      t.integer :position
       t.belongs_to :menu, null: false, foreign_key: true
-      t.belongs_to :user, null: false, foreign_key: true
 
       t.timestamps
     end

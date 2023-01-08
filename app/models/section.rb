@@ -1,4 +1,7 @@
 class Section < ApplicationRecord
+  include Turbo::Streams::ActionHelper
+  include Turbo::Streams::StreamName
+  acts_as_list
   belongs_to :menu
-  belongs_to :user
+  has_many :items
 end

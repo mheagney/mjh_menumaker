@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.1.2"
+ruby "3.2.0"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.4"
@@ -75,13 +75,9 @@ group :test do
 end
 
 gem "devise", "~> 4.8"
-
 gem "acts_as_list", "~> 1.0"
-
 gem "acts_as_price", "~> 0.3.0"
-
 gem "pundit", "~> 2.3"
-
 gem "inline_svg", "~> 1.8"
-
 gem "rails_heroicon", "~> 2.1"
+gem "view_component", "~> 2.80"

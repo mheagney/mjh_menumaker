@@ -1,0 +1,4 @@
+<%= turbo_stream.prepend "#{dom_id(@section)}_items" do %>
+  <%= render @item %>
+<% end %>
+<%= turbo_stream.update("toasts", partial: "shared/flash") %>

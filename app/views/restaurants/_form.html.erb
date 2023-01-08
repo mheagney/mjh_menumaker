@@ -1,78 +1,91 @@
-<div class="mt-4 grid grid-cols-1 sm:grid-cols-2 mx-auto px-2 divide-y sm:divide-x divide-solid shadow-md">
-    <div class="p-4">
-        <div class="">
-            <div>
-              <h3 class="text-lg font-medium leading-6 text-gray-900">Personal Information</h3>
-              <p class="mt-1 text-sm text-gray-500">Use a permanent address where you can receive mail.</p>
-            </div>
-            <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
-              <div class="sm:col-span-3">
-                <label for="first-name" class="block text-sm font-medium text-gray-700">First name</label>
-                <div class="mt-1">
-                  <input type="text" name="first-name" id="first-name" autocomplete="given-name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                </div>
-              </div>
-      
-              <div class="sm:col-span-3">
-                <label for="last-name" class="block text-sm font-medium text-gray-700">Last name</label>
-                <div class="mt-1">
-                  <input type="text" name="last-name" id="last-name" autocomplete="family-name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                </div>
-              </div>
-      
-              <div class="sm:col-span-4">
-                <label for="email" class="block text-sm font-medium text-gray-700">Email address</label>
-                <div class="mt-1">
-                  <input id="email" name="email" type="email" autocomplete="email" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                </div>
-              </div>
-      
-              <div class="sm:col-span-3">
-                <label for="country" class="block text-sm font-medium text-gray-700">Country</label>
-                <div class="mt-1">
-                  <select id="country" name="country" autocomplete="country-name" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                    <option>United States</option>
-                    <option>Canada</option>
-                    <option>Mexico</option>
-                  </select>
-                </div>
-              </div>
-      
-              <div class="sm:col-span-6">
-                <label for="street-address" class="block text-sm font-medium text-gray-700">Street address</label>
-                <div class="mt-1">
-                  <input type="text" name="street-address" id="street-address" autocomplete="street-address" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                </div>
-              </div>
-      
-              <div class="sm:col-span-2">
-                <label for="city" class="block text-sm font-medium text-gray-700">City</label>
-                <div class="mt-1">
-                  <input type="text" name="city" id="city" autocomplete="address-level2" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                </div>
-              </div>
-      
-              <div class="sm:col-span-2">
-                <label for="region" class="block text-sm font-medium text-gray-700">State / Province</label>
-                <div class="mt-1">
-                  <input type="text" name="region" id="region" autocomplete="address-level1" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                </div>
-              </div>
-      
-              <div class="sm:col-span-2">
-                <label for="postal-code" class="block text-sm font-medium text-gray-700">ZIP / Postal code</label>
-                <div class="mt-1">
-                  <input type="text" name="postal-code" id="postal-code" autocomplete="postal-code" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                </div>
-              </div>
-            </div>
+<%= form_for @restaurant, builder: TailwindBuilder do |f| %>
+  <div class="shadow-md">
+    <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 mx-auto px-2 sm:divide-x divide-solid">
+      <div class="p-4">
+        <div>
+          <h3 class="text-lg font-medium leading-6 text-gray-900">Business Information</h3>
+          <p class="mt-1 text-sm text-gray-500">Use the valid information that customers can use to connect with you.</p>
+        </div>
+        <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+          <div class="sm:col-span-4">
+            <%= f.label :name, "Restaurant Name" %>
+            <%= f.tw_text_field :name %>
           </div>
+          <div class="sm:col-span-4">
+            <%= f.label :address %>
+            <%= f.tw_text_field :address %>
+          </div>
+          <div class="sm:col-span-4">
+            <%= f.label :address2, "Address Continued" %>
+            <%= f.tw_text_field :address2 %>
+          </div>
+          <div class="sm:col-start-1 sm:col-span-2">
+            <%= f.label :city %>
+            <%= f.tw_text_field :city %>
+          </div>
+          <div class="sm:col-span-2">
+            <%= f.label :state %>
+            <%= f.tw_text_field :state %>
+          </div>
+          <div class="sm:col-span-2">
+            <%= f.label :zipcode %>
+            <%= f.tw_text_field :zipcode %>
+          </div>
+          <div class="sm:col-span-4">
+            <%= f.label :phone, "Phone Number" %>
+            <%= f.tw_phone_field :phone %>
+          </div>
+          <div class="sm:col-span-4">
+            <%= f.label :email, "Email Address" %>
+            <%= f.tw_email_field :email %>
+          </div>
+          <div class="sm:col-span-4">
+            <%= f.label :web, "Web Site" %>
+            <%= f.site_field :web, {site: "https://"} %>
+          </div>
+          <div class="sm:col-span-4">
+            <%= f.label :twitter %>
+            <%= f.site_field :twitter, {site: "twitter.com/"} %>
+          </div>
+          <div class="sm:col-span-4">
+            <%= f.label :instagram %>
+            <%= f.site_field :instagram, {site: "instagram.com/"} %>
+          </div>
+          <div class="sm:col-span-4">
+            <%= f.label :facebook %>
+            <%= f.site_field :facebook, {site: "facebook.com/"} %>
+          </div>
+        </div>
+      </div>
+      <div class="p-4">
+        <div>
+          <h3 class="text-lg font-medium leading-6 text-gray-900">Business Hours</h3>
+          <p class="mt-1 text-sm text-gray-500">Your regular operating hours of business.</p>
+        </div>
+        <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+          <%= f.fields_for :business_hours do |b| %>
+            <%= b.hidden_field :day %>
+            <div class="sm:col-span-5">
+              <h3 class="font-medium leading-6 text-gray-900"><%= Date::DAYNAMES[b.index] %></h3>
+            </div>
+            <div class="-mt-4 sm:col-span-2">
+              <%= b.label :open_at, "Open at", class: "block text-sm font-medium text-gray-700" %>
+              <%= b.select :open_at, @hours, {class: "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"} %>
+            </div>
+            <div class="-mt-4 sm:col-span-2">
+              <%= b.label :close_at, "Close at", class: "block text-sm font-medium text-gray-700" %>
+              <%= b.select :close_at, @hours, {class: "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"} %>
+            </div>
+            <div class="-mt-4 sm:col-span-1 place-self-center">
+              <%= b.check_box :closed, class: "h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500" %>
+              <%= b.label :closed, class: "font-medium text-gray-700" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
-    <div class="p-4 text-white bg-purple-600">Line 02</div>
-  </div>
-  <div class="pt-5">
-    <div class="flex justify-end">
-      <button type="button" class="rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Cancel</button>
-      <button type="submit" class="ml-3 inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Save</button>
+    <div class="mt-4 p-5 flex justify-end">
+      <%= f.submit "Save", class: "ml-3 inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" %>
     </div>
   </div>
+<% end %>

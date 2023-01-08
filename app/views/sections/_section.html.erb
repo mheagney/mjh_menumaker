@@ -1,0 +1,31 @@
+<div id="<%= dom_id(section) %>" data-id="<%= section.id %>" data-menu="<%= @menu.id %>" class="overflow-hidden bg-white px-2 py-4 shadow sm:rounded-md">
+  <div class="flex justify-between mb-4">
+    <div class="flex">
+      <%= content_tag(:span, :drag_indicator, class: "material-icons text-gray-400 handle") %>
+      <div class="ml-2">
+        <h3 class="text-lg font-medium leading-6 text-gray-900"><%= section.title %></h3>
+        <p class="mt-1 text-sm text-gray-500"><%= section.description %></p>
+      </div>
+    </div>
+    <div>
+      <%= link_to 'Edit', edit_menu_section_path(@menu, section), class: "ml-3 text-sm font-medium text-gray-700 ", data: {turbo_frame: "modal"} %>
+      <%= link_to 'Add Item', new_menu_section_item_path(@menu, section), class: "ml-3 text-sm font-medium text-gray-700 ", data: {turbo_frame: "modal"} %>
+      <%= link_to 'Delete', confirm_menu_section_path(@menu, section), class: "ml-3 text-sm font-medium text-gray-700 ", data: {turbo_frame: "modal"} %>
+    </div>
+  </div>
+  <div x-data="{ isOpen: false }">
+    <div class="flex items-center mb-4">
+      <span class="flex flex-col">
+        <span class="text-sm text-gray-500" id="availability-description">Show Items</span>
+      </span>
+      <!-- Enabled: "bg-indigo-600", Not Enabled: "bg-gray-200" -->
+      <button x-on:click="isOpen = !isOpen" type="button" :class="{'bg-gray-200' : !isOpen, 'bg-indigo-600' : isOpen}" class="ml-4 relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" role="switch" aria-checked="false" aria-labelledby="availability-label" aria-describedby="availability-description">
+        <!-- Enabled: "translate-x-5", Not Enabled: "translate-x-0" -->
+        <span aria-hidden="true" :class="{'translate-x-0' : !isOpen, 'translate-x-5' : isOpen}" class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"></span>
+      </button>
+    </div>
+    <div x-show="isOpen" id="<%= dom_id(section) %>_items" data-controller="drag" data-drag-url="/menus/:menu_id/sections/:section_id/items/:id/move" role="list" class="cloak space-y-4 px-4">
+      <%= render partial: "items/items", locals: {section: section, items: section.items.order(position: :asc)} %>
+    </div>
+  </div>
+</div>

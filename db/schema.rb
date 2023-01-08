@@ -10,19 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_22_195226) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_06_171059) do
+  create_table "business_hours", force: :cascade do |t|
+    t.integer "day"
+    t.string "open_at"
+    t.string "close_at"
+    t.boolean "closed"
+    t.integer "restaurant_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["restaurant_id"], name: "index_business_hours_on_restaurant_id"
+  end
+
   create_table "items", force: :cascade do |t|
     t.string "title"
     t.string "description"
     t.integer "price"
     t.string "image"
-    t.integer "order"
+    t.integer "position"
     t.integer "section_id", null: false
-    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["section_id"], name: "index_items_on_section_id"
-    t.index ["user_id"], name: "index_items_on_user_id"
   end
 
   create_table "likes", force: :cascade do |t|
@@ -65,13 +74,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_22_195226) do
   create_table "sections", force: :cascade do |t|
     t.string "title"
     t.string "description"
-    t.integer "order"
+    t.integer "position"
     t.integer "menu_id", null: false
-    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["menu_id"], name: "index_sections_on_menu_id"
-    t.index ["user_id"], name: "index_sections_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -89,11 +96,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_22_195226) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "business_hours", "restaurants"
   add_foreign_key "items", "sections"
-  add_foreign_key "items", "users"
   add_foreign_key "menus", "restaurants"
   add_foreign_key "menus", "users"
   add_foreign_key "restaurants", "users"
   add_foreign_key "sections", "menus"
-  add_foreign_key "sections", "users"
 end

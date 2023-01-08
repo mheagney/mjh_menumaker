@@ -7,15 +7,22 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
     <%= javascript_importmap_tags %>
   </head>
   <body>
-    <div x-data="{menu: false}" class="min-h-full">
+    <div x-data="{menu: false}" class="container min-h-full">
       <%= render 'shared/nav' %>
+      <%= turbo_frame_tag :toasts do %>
+        <%= render 'shared/flash' %>
+      <% end %>
       <main>
         <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
           <%= yield %>
         </div>
+        <%= turbo_frame_tag "modal"%>
+        <%= render 'shared/confirm' %>
       </main>
     </div>
   </body>

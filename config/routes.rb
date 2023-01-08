@@ -1,7 +1,16 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :menus
+  resources :menus do
+    resources :sections do
+      patch :move, on: :member
+      get :confirm, on: :member
+      resources :items do
+        patch :move, on: :member
+        get :confirm, on: :member
+      end
+    end
+  end
   resources :restaurants
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
