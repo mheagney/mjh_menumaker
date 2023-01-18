@@ -6,6 +6,7 @@
           <h3 class="text-lg font-medium leading-6 text-gray-900">Business Information</h3>
           <p class="mt-1 text-sm text-gray-500">Use the valid information that customers can use to connect with you.</p>
         </div>
+        <%= render partial: 'shared/form_errors', locals: {f:f} %>
         <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
           <div class="sm:col-span-4">
             <%= f.label :name, "Restaurant Name" %>
@@ -64,7 +65,7 @@
         </div>
         <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
           <%= f.fields_for :business_hours do |b| %>
-            <%= b.hidden_field :day %>
+            <%= b.hidden_field :day, value: b.index %>
             <div class="sm:col-span-5">
               <h3 class="font-medium leading-6 text-gray-900"><%= Date::DAYNAMES[b.index] %></h3>
             </div>

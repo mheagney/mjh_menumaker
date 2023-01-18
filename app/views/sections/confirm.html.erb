@@ -1,7 +1,14 @@
 <%= render TurboModalComponent.new(title: "Are you sure?") do %>
   <div class="mt-2 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
     <div class="sm:col-span-4">Do you really want to delete <%= @section.title %>?</div>
-    <div class="sm:col-span-4">This will also delete all menu items in this section!</div>
+    <div class="sm:col-span-4">
+      This will also delete the following menu items:
+      <ul>
+        <% @section.items.each do |i|%>
+          <%= i.title %>
+        <%end%>
+      </ul>
+    </div>
     <div class="sm:col-span-4">
       <div class="flex">
         <%= button_tag "Cancel", data: { action: "modal#hideModal" }, type: "button", class: "rounded-lg py-3 px-5 bg-blue-600 text-white" %>

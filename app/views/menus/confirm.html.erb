@@ -2,12 +2,15 @@
   <div class="mt-2 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
     <div class="sm:col-span-4">Do you really want to delete:</div>
     <div class="sm:col-span-6">
-      <%= render ItemComponent.new(item: @item, show_controls: false, show_handle: false) %>
+      <h2 class="text-2xl text-gray-900"><%= @menu.title %></h2>
+      <h3 class="text-lg text-gray-900"><%= @menu.restaurant.name %></h3>
+      <p><%= @menu.restaurant.address %><%= @menu.restaurant.address2 %></p>
+      <p><%= @menu.restaurant.city %><%= @menu.restaurant.state %>, <%= @menu.restaurant.zipcode %></p>
     </div>
     <div class="sm:col-span-4">
       <div class="flex">
         <%= button_tag "Cancel", data: { action: "modal#hideModal" }, type: "button", class: "rounded-lg py-3 px-5 bg-blue-600 text-white" %>
-        <%= button_to 'Delete', menu_section_item_path(@menu, @item.section, @item), class: "ml-3 rounded-lg py-3 px-5 bg-red-600 text-white ", method: :delete, data: {"turbo-method": :delete}%>
+        <%= button_to 'Delete', menu_path(@menu), class: "ml-3 rounded-lg py-3 px-5 bg-red-600 text-white ", method: :delete, data: {"turbo-method": :delete}%>
       </div>
     </div>
   </div>

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :menus do
+    get :confirm, on: :member
     resources :sections do
       patch :move, on: :member
       get :confirm, on: :member
@@ -11,10 +12,15 @@ Rails.application.routes.draw do
       end
     end
   end
-  resources :restaurants
+  resources :restaurants do
+    get :confirm, on: :member
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
+  resources :site do
+    get :demo, on: :member
+  end
   unauthenticated do
     root "site#index"
   end

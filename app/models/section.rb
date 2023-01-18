@@ -3,5 +3,6 @@ class Section < ApplicationRecord
   include Turbo::Streams::StreamName
   acts_as_list
   belongs_to :menu
-  has_many :items
+  has_many :items, dependent: :destroy
+  validates :title, presence: true
 end

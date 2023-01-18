@@ -1,0 +1,42 @@
+<div id="<%= dom_id(@item) %>" data-id="<%= @item.id %>" data-section="<%= @item.section.id %>" data-menu="<%= @item.section.menu.id %>" class="flex flex-col">
+  <div class="relative flex flex-col md:flex-row md:space-x-5 space-y-3 md:space-y-0 rounded-xl shadow-lg p-3 max-w-xs md:max-w-3xl border border-white bg-white">
+    <% if @show_handle %>
+      <%= content_tag(:span, :drag_indicator, class: "material-icons text-gray-400 handle") %>
+    <% end %>
+    <div class="w-full md:w-1/3 bg-white grid place-items-center">
+      <% if @item.image.attached? %>
+        <%= image_tag @item.image, class: "rounded-xl" %>
+      <% else %>
+        <div class="flex max-w-lg justify-center rounded-md border-2 border-dashed border-gray-300 px-6 pt-5 pb-6">
+          <div class="space-y-1 text-center">
+            <%= content_tag(:span, :image, class: "material-symbols-outlined  text-gray-400") %>
+            <p class="text-xs text-gray-500">Upload a file</p>
+          </p>
+          <p class="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="w-full md:w-2/3 bg-white flex flex-col space-y-2 p-3">
+    <div class="flex justify-between item-center">
+      <div class="flex items-center">
+        <%= content_tag(:span, :favorite, class: "material-symbols-outlined text-gray-400") %>
+        <p class="text-gray-600 font-bold text-sm ml-1">
+          <span class="text-gray-500 font-normal">(Liked by <%= pluralize(@item.likes.count, "person") %>)</span>
+        </p>
+        <% if @show_controls %>
+          <%= link_to edit_menu_section_item_path(@item.section.menu, @item.section, @item), class: "ml-3 text-sm font-medium text-gray-700 ", data: {turbo_frame: "modal"}, title: "Edit Menu Item" do %>
+            <%= content_tag(:span, :edit, class: "material-symbols-outlined  text-gray-400") %>
+          <% end %>
+          <%= link_to confirm_menu_section_item_path(@item.section.menu, @item.section, @item), class: "ml-3 text-sm font-medium text-gray-700 ", data: {turbo_frame: "modal"}, title: "Delete Menu Item" do %>
+            <%= content_tag(:span, :delete, class: "material-symbols-outlined  text-gray-400") %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <h3 class="font-black text-gray-800 md:text-3xl text-xl"><%= @item.title%></h3>
+    <p class="md:text-lg text-gray-500 text-base"><%= @item.description %></p>
+    <p class="text-xl font-black text-gray-800">$<%= @item.price %></p>
+  </div>
+</div>
+</div>

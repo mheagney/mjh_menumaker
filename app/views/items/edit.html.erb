@@ -1,4 +1,3 @@
-<div>
-  <h1 class="font-bold text-4xl">Items#edit</h1>
-  <p>Find me in app/views/items/edit.html.erb</p>
-</div>
+<%= render TurboModalComponent.new(title: "Update Menu Item") do %>
+  <%= render "form" %>
+<% end %>

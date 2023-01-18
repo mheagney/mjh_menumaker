@@ -1,0 +1,33 @@
+<div id="<%= dom_id(@section) %>" data-id="<%= @section.id %>" data-menu="<%= @section.menu.id %>" x-data="{ isOpen: false }" class="overflow-hidden bg-white px-2 py-4 shadow sm:rounded-md">
+  <div class="flex justify-between mb-4">
+    <div class="flex">
+      <%= content_tag(:span, :drag_indicator, class: "material-icons text-gray-400 handle") %>
+      <div class="ml-2">
+        <h3 class="text-lg font-medium leading-6 text-gray-900"><%= @section.title %></h3>
+        <p class="mt-1 text-sm text-gray-500"><%= @section.description %></p>
+        <div class="flex items-center mb-4">
+          <span class="mt-4 self-center">
+            <span class="text-sm text-gray-500" id="availability-description">Show Menu Items</span>
+          </span>
+          <button x-on:click="isOpen = !isOpen" type="button" :class="{'bg-gray-200' : !isOpen, 'bg-indigo-600' : isOpen}" class="ml-4 relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" role="switch" aria-checked="false" aria-labelledby="availability-label" aria-describedby="availability-description">
+            <span aria-hidden="true" :class="{'translate-x-0' : !isOpen, 'translate-x-5' : isOpen}" class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div>
+      <%= link_to edit_menu_section_path(@section.menu, @section), class: "ml-3 text-sm font-medium text-gray-700 ", data: {turbo_frame: "modal"}, title: "Edit Section" do %>
+        <%= content_tag(:span, :edit, class: "material-symbols-outlined  text-gray-400") %>
+      <% end %>
+      <%= link_to new_menu_section_item_path(@section.menu, @section), class: "ml-3 text-sm font-medium text-gray-700 ", data: {turbo_frame: "modal"}, title: "Add Menu Item" do %>
+        <%= content_tag(:span, :add_circle, class: "material-symbols-outlined  text-gray-400") %>
+      <% end %>
+      <%= link_to confirm_menu_section_path(@section.menu, @section), class: "ml-3 text-sm font-medium text-gray-700 ", data: {turbo_frame: "modal"}, title: "Delete Section" do %>
+        <%= content_tag(:span, :delete, class: "material-symbols-outlined  text-gray-400") %>
+      <% end %>
+    </div>
+  </div>
+  <div x-show="isOpen" id="<%= dom_id(@section) %>_items" data-controller="drag" data-drag-url="/menus/:menu_id/sections/:section_id/items/:id/move" role="list" x-cloak class="space-y-4 px-4">
+    <%= render(ItemComponent.with_collection(@section.items.order(position: :asc), show_controls: true, show_handle: true))%>
+  </div>
+</div>

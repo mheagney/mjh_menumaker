@@ -1,4 +1,4 @@
-<%= turbo_stream.prepend "#{dom_id(@section)}_items" do %>
+<%= turbo_stream.replace dom_id(@item) do %>
   <%= render(ItemComponent.new(item: @item, show_controls: true, show_handle: true))%>
 <% end %>
 <%= turbo_stream.update("toasts", partial: "shared/flash") %>

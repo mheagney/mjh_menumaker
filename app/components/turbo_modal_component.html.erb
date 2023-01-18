@@ -1,15 +1,23 @@
 <%= turbo_frame_tag "modal" do %>
-  <%= tag.div data: {
+  <div class="relative z-10">
+    <%= tag.div data: {
     controller: "modal",
     action: "turbo:submit-end->modal#submitEnd keyup@window->modal#closeWithKeyboard" },
-    class: "fixed inset-0 backdrop-blur-sm bg-white/30 flex justify-center items-center" do %>
-    <div class="bg-white shadow-lg rounded-md p-2">
-      <div class="p-4">
-        <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight"><%= @title %></h2>
-      </div>
-      <div class="px-4">
-        <%= content %>
+    class: "" do %>
+      <div class="fixed inset-0 z-5 bg-black/70"></div>
+      <div class="fixed inset-0 z-10 overflow-y-auto">
+        <div class="flex min-h-full items-end justify-center p-4 sm:items-center sm:p-0">
+          <div class="bg-white shadow-lg rounded-md p-2">
+            <div class="p-4">
+              <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight"><%= @title %></h2>
+            </div>
+            <div class="px-4">
+              <%= content %>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   <% end %>
+</div>
 <% end %>

@@ -9,7 +9,7 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.new(item_params)
+    @item = Item.new(item_params.except(:remove_image))
     @item.section = @section
 
     if @item.save
@@ -24,7 +24,10 @@ class ItemsController < ApplicationController
   end
 
   def update
-    if @item.update(item_params)
+    if item_params[:remove_image].to_i == 1
+      @item.image.purge_later
+    end
+    if @item.update(item_params.except(:remove_image))
       flash[:notice] = "Item Updated."
     else
       render :edit, status: :unprocessable_entity
@@ -67,6 +70,7 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:title, :description, :price)
+    params[:item][:price] = params[:item][:price].delete("$")
+    params.require(:item).permit(:title, :description, :price, :image, :remove_image)
   end
 end

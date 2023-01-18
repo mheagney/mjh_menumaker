@@ -1,4 +1,4 @@
 <%= turbo_stream.prepend "menu-sections" do %>
-  <%= render partial: "sections/section", locals: { section: @section } %>
+  <%= render(SectionComponent.new(section: @section))%>
 <% end %>
 <%= turbo_stream.update("toasts", partial: "shared/flash") %>

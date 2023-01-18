@@ -11,6 +11,7 @@ class RestaurantsController < ApplicationController
     @restaurant.user_id = current_user.id
     if @restaurant.valid?
       @restaurant.save
+      redirect_to restaurants_path
     else
       render :new, status: :unprocessable_entity
     end

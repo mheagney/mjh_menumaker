@@ -7,10 +7,12 @@
       <p class="mt-1 text-sm text-gray-500">Organize your menu with sections.</p>
     </div>
     <div class="mt-4 flex md:mt-0 mr-5">
-      <%= link_to 'Add', new_menu_section_path(@menu), class: "ml-3 rounded-md border border-gray-300 bg-white px-4 py-3 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2", data: {turbo_frame: "modal"} %>
+      <%= link_to new_menu_section_path(@menu), class: "ml-3 px-4 py-3 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2", data: {turbo_frame: "modal"}, title: "Add Menu Section" do %>
+        <%= content_tag(:span, :playlist_add, class: "material-symbols-outlined  text-gray-400") %>
+      <% end %>
     </div>
   </div>
   <div id="menu-sections" data-controller="drag" data-drag-url="/menus/:menu_id/sections/:id/move" role="list" class="space-y-4 px-4">
-    <%= render @menu.sections.order(position: :asc) %>
+    <%= render(SectionComponent.with_collection(@menu.sections.order(position: :asc)))%>
   </div>
 </div>
