@@ -13,6 +13,10 @@
             <%= f.tw_text_field :title, placeholder: "Main Menu" %>
           </div>
           <div class="sm:col-span-4">
+            <%= f.label :description %>
+            <%= f.tw_text_field :description, placeholder: "" %>
+          </div>
+          <div class="sm:col-span-4">
             <%= f.label :restaurant,  class: "block text-sm font-medium text-gray-700" %>
             <%= f.collection_select :restaurant_id, current_user.restaurants, :id, :name,{}, {class: "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"} %>
           </div>
