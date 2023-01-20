@@ -100,6 +100,7 @@ class RestaurantsController < ApplicationController
     params.require(:restaurant).permit(
       :name, :address, :address2, :city, :state, :zipcode,
       :phone, :email, :web, :twitter, :instagram, :facebook,
+      :image,
       business_hours_attributes: [:day, :open_at, :close_at, :closed, :id],
     )
   end
