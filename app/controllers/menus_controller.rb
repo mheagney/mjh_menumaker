@@ -1,6 +1,6 @@
 class MenusController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_menu, only: [:edit, :update, :show, :destroy, :confirm]
+  before_action :set_menu, only: [:edit, :update, :show, :destroy, :confirm, :qr_code]
 
   def index
   end
@@ -45,6 +45,10 @@ class MenusController < ApplicationController
   end
 
   def confirm
+  end
+
+  def qr_code
+    send_data RQRCode::QRCode.new(menu_url(@menu)).as_png(size: 300), type: "image/png", disposition: "attachment"
   end
 
   private

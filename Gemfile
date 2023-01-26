@@ -81,3 +81,4 @@ gem "inline_svg", "~> 1.8"
 gem "rails_heroicon", "~> 2.1"
 gem "view_component", "~> 2.80"
 gem 'shopify-money', require: 'money'
+gem "rqrcode"

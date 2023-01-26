@@ -1,0 +1,13 @@
+<div class="flex">
+  <div class="flex-shrink-0">
+    <%= content_tag(:span, :schedule, class: "material-symbols-outlined  text-gray-400") %>
+  </div>
+  <div class="ml-3 w-full text-base text-gray-500">
+    <% @menu.restaurant.business_hours.order(day: :asc).each do |day|%>
+      <div class="flex justify-between">
+        <%= Date::DAYNAMES[day.day] %>: 
+        <div><%= day.hours %></div>
+      </div>
+    <% end %>
+  </div>
+</div>

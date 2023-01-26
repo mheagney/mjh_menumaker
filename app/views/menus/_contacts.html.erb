@@ -1,0 +1,39 @@
+<div class="flex-shrink-0">
+  <%= content_tag(:span, :call, class: "material-symbols-outlined  text-gray-400") %>
+</div>
+<div class="ml-3 text-base text-gray-500">
+  <p><%= @menu.restaurant.phone%></p>
+</div>
+</div>
+<div class="mt-2 flex">
+  <div class="flex-shrink-0">
+    <%= content_tag(:span, :mail, class: "material-symbols-outlined  text-gray-400") %>
+  </div>
+  <div class="ml-3 text-base text-gray-500">
+    <p><%= @menu.restaurant.email%></p>
+  </div>
+</div>
+<div class="mt-2 flex">
+  <div class="flex-shrink-0">
+    <%= inline_svg_tag "twitter.svg", class: 'h-6 w-6 stroke-white', alt: "Menu Maker" %>
+  </div>
+  <div class="ml-3 text-base text-gray-500">
+    <p><%= @menu.restaurant.twitter%></p>
+  </div>
+</div>
+<div class="mt-2 flex">
+  <div class="flex-shrink-0">
+    <%= inline_svg_tag "instagram.svg", class: 'h-6 w-6 stroke-white', alt: "Menu Maker" %>
+  </div>
+  <div class="ml-3 text-base text-gray-500">
+    <p><%= @menu.restaurant.instagram%></p>
+  </div>
+</div>
+<div class="mt-2 flex">
+  <div class="flex-shrink-0">
+    <%= inline_svg_tag "facebook.svg", class: 'h-6 w-6 stroke-white', alt: "Menu Maker" %>
+  </div>
+  <div class="ml-3 text-base text-gray-500">
+    <p><%= @menu.restaurant.facebook%></p>
+  </div>
+</div>

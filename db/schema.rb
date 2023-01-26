@@ -98,7 +98,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_20_015947) do
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "active_menu_id"
     t.string "image"
+    t.index ["active_menu_id"], name: "index_restaurants_on_active_menu_id"
     t.index ["user_id"], name: "index_restaurants_on_user_id"
   end
 
@@ -134,6 +136,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_20_015947) do
   add_foreign_key "likes", "users"
   add_foreign_key "menus", "restaurants"
   add_foreign_key "menus", "users"
+  add_foreign_key "restaurants", "menus", column: "active_menu_id"
   add_foreign_key "restaurants", "users"
   add_foreign_key "sections", "menus"
 end

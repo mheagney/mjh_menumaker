@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :menus do
     get :confirm, on: :member
+    get :qr_code, on: :member
     resources :sections do
       patch :move, on: :member
       get :confirm, on: :member
