@@ -6,4 +6,9 @@ class Restaurant < ApplicationRecord
   has_one_attached :image
   has_many :likes, as: :likeable, dependent: :destroy
   accepts_nested_attributes_for :business_hours, allow_destroy: true
+  validates :name, presence: true
+  validates :address, presence: true
+  validates :city, presence: true
+  validates :state, presence: true
+  validates :zipcode, presence: true
 end

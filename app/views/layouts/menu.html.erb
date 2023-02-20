@@ -14,34 +14,7 @@
   <body>
     <div class="min-h-full">
       <%= render partial: 'header' %>
-      <main class="-mt-20 sm:-mt-24 pb-8">
-        <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-          <h1 class="sr-only">Menu</h1>
-          <!-- Main 3 column grid -->
-          <div class="mt-12 sm:mt-0 grid grid-cols-1 items-start gap-4 lg:grid-cols-3 lg:gap-8">
-            <!-- Left column -->
-            <div class="grid grid-cols-1 gap-4 lg:col-span-2">
-              <%= render partial: 'menu' %>
-            </div>
-            <!-- Right column -->
-            <div class="grid grid-cols-1 gap-4">
-              <section aria-labelledby="announcements-title">
-                <div class="overflow-hidden rounded-lg bg-white shadow">
-                  <div class="p-6">
-                    <%= render partial: 'address' %>
-                    <div class="mt-9">
-                      <%= render partial: 'hours' %>
-                      <div class="mt-6 flex">
-                        <%= render partial: 'contacts' %>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-          </div>
-        </div>
-      </main>
+      <%= yield %>
       <footer>
         <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
           <div class="border-t border-gray-200 py-8 text-center text-sm text-gray-500 sm:text-left"><span class="block sm:inline">&copy; 2023 Menu Maker.</span> <span class="block sm:inline">All rights reserved.</span></div>

@@ -1,6 +1,6 @@
 class RestaurantsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_restaurant, only: [:edit, :update, :show, :destroy]
+  before_action :set_restaurant, only: [:edit, :update, :show, :destroy, :confirm]
   before_action :set_hours, only: [:new, :edit]
 
   def index
@@ -36,13 +36,21 @@ class RestaurantsController < ApplicationController
   def edit
   end
 
+  def confirm
+  end
+
   def destroy
+    if @restaurant.destroy
+      flash[:notice] = "Restaurant Removed."
+    else
+      flash[:notice] = "Unable to Remove Restaurant."
+    end
   end
 
   private
 
   def set_restaurant
-    @restaurant = current_user.restaurants.find(params[:id])
+    @restaurant = authorize Restaurant.find(params[:id])
   end
 
   def set_hours

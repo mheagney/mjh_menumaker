@@ -10,11 +10,11 @@
         <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
           <div class="sm:col-span-4">
             <%= f.label :name, "Restaurant Name" %>
-            <%= f.tw_text_field :name %>
+            <%= f.tw_text_field :name, required: true %>
           </div>
           <div class="sm:col-span-4">
             <%= f.label :address %>
-            <%= f.tw_text_field :address %>
+            <%= f.tw_text_field :address, required: true %>
           </div>
           <div class="sm:col-span-4">
             <%= f.label :address2, "Address Continued" %>
@@ -22,15 +22,15 @@
           </div>
           <div class="sm:col-start-1 sm:col-span-2">
             <%= f.label :city %>
-            <%= f.tw_text_field :city %>
+            <%= f.tw_text_field :city, required: true %>
           </div>
           <div class="sm:col-span-2">
             <%= f.label :state %>
-            <%= f.tw_text_field :state %>
+            <%= f.tw_text_field :state, required: true %>
           </div>
           <div class="sm:col-span-2">
             <%= f.label :zipcode %>
-            <%= f.tw_text_field :zipcode %>
+            <%= f.tw_text_field :zipcode, required: true %>
           </div>
           <div class="sm:col-span-4">
             <%= f.label :phone, "Phone Number" %>

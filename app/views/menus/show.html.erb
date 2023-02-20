@@ -1,3 +1,28 @@
-<div class="m-6 p-6 shadow-md">
-  <h3><%= @menu.restaurant.name %></h3>
-</div>
+<main class="-mt-20 sm:-mt-24 pb-8">
+  <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+    <h1 class="sr-only">Menu</h1>
+    <!-- Main 3 column grid -->
+    <div class="mt-12 sm:mt-0 grid grid-cols-1 items-start gap-4 lg:grid-cols-3 lg:gap-8">
+      <!-- Left column -->
+      <div class="grid grid-cols-1 gap-4 lg:col-span-2">
+        <%= render partial: 'menu' %>
+      </div>
+      <!-- Right column -->
+      <div class="grid grid-cols-1 gap-4">
+        <section aria-labelledby="announcements-title">
+          <div class="overflow-hidden rounded-lg bg-white shadow">
+            <div class="p-6">
+              <%= render partial: 'address' %>
+              <div class="mt-9">
+                <%= render partial: 'hours' %>
+                <div class="mt-6 flex">
+                  <%= render partial: 'contacts' %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>

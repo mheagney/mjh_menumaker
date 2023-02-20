@@ -3,9 +3,9 @@
     <div class="relative sm:flex flex-wrap items-center justify-center lg:justify-between">
       <!-- Logo -->
       <div class="absolute left-0 flex-shrink-0 py-5 lg:static">
-        <%= link_to root_path do %>
-          <h3 class="text-white text-2xl">Menu Maker</h3>
+        <%= link_to root_path, class: "flex" do %>
           <%= inline_svg_tag "logo.svg", class: 'h-9 w-9 stroke-white', alt: "Menu Maker" %>
+          <h3 class="ml-2 text-white text-2xl">Menu Maker</h3>
         <% end %>
       </div>
     </div>

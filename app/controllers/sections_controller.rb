@@ -54,11 +54,11 @@ class SectionsController < ApplicationController
   private
 
   def set_menu
-    @menu = Menu.find(params[:menu_id])
+    @menu = authorize Menu.find(params[:menu_id])
   end
 
   def set_section
-    @section = Section.find(params[:id])
+    @section = authorize Section.find(params[:id])
   end
 
   def section_params

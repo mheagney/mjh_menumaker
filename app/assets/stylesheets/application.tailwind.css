@@ -9,18 +9,6 @@
     @apply inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2
 }
 
-.devise-label {
-    @apply block text-sm font-medium text-gray-700
-  }
-
-  .devise-input {
-    @apply block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm
-  }
-
-  .devise-field {
-    @apply mt-4
-  }
-
 .nav-mobile-submenu {
     @apply block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white
 }
@@ -53,6 +41,50 @@
     @apply text-gray-300 hover:bg-gray-700 hover:text-white
 }
 
+.devise-label {
+    @apply block text-sm font-medium text-gray-700
+  }
+  
+  .devise-radio-label {
+    @apply ml-3 block text-sm font-medium text-gray-700
+  }
+  
+  .devise-checkbox-label {
+    @apply ml-2 block text-sm text-gray-900
+  }
+  
+  .devise-input {
+    @apply block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm
+  }
+  
+  .devise-button {
+    @apply flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2
+  }
+  
+  .devise-danger-button {
+    @apply flex w-full justify-center rounded-md border border-transparent bg-red-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2
+  }
+  
+  .devise-checkbox {
+    @apply h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500
+  }
+  
+  .devise-radio {
+    @apply h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500
+  }
+  
+  .devise-link-mobile {
+    @apply block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white
+  }
+  
+  .devise-link {
+    @apply block px-4 py-2 text-sm text-gray-700
+  }
+  
+  div.actions {
+    @apply mt-4
+  }
+
 #modal {
     position: absolute;
     z-index: 2;
@@ -63,3 +95,5 @@
     border-radius: 6px;
     background: #bad5ff;
   }
+
+  

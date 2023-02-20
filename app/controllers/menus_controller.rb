@@ -1,6 +1,6 @@
 class MenusController < ApplicationController
-  before_action :authenticate_user!
-  before_action :verify_restaurants
+  before_action :authenticate_user!, except: [:show]
+  before_action :verify_restaurants, except: [:show]
   before_action :set_menu, only: [:edit, :update, :show, :destroy, :confirm, :qr_code]
 
   def index
@@ -42,6 +42,8 @@ class MenusController < ApplicationController
   def destroy
     if @menu.destroy
       flash[:notice] = "Menu Removed."
+    else
+      flash[:notice] = "Unable to Remove Menu."
     end
   end
 
@@ -61,7 +63,11 @@ class MenusController < ApplicationController
   end
 
   def set_menu
-    @menu = Menu.find(params[:id])
+    @menu = authorize Menu.find(params[:id])
+
+    if @menu.nil?
+      redirect_to root_path, flash: {notice: "Menu not found"}
+    end
   end
 
   def set_published
