@@ -1,5 +1,6 @@
 class MenusController < ApplicationController
   before_action :authenticate_user!
+  before_action :verify_restaurants
   before_action :set_menu, only: [:edit, :update, :show, :destroy, :confirm, :qr_code]
 
   def index
@@ -52,6 +53,12 @@ class MenusController < ApplicationController
   end
 
   private
+
+  def verify_restaurants
+    if current_user.restaurants.empty?
+      redirect_to new_restaurant_path, flash: {notice: "You must create your restaurant first!"}
+    end
+  end
 
   def set_menu
     @menu = Menu.find(params[:id])

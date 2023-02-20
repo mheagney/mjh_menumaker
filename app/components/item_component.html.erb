@@ -22,10 +22,6 @@
   <div class="w-full md:w-2/3 bg-white flex flex-col space-y-2 p-3">
     <div class="flex justify-between item-center">
       <div class="flex items-center">
-        <%= content_tag(:span, :favorite, class: "material-symbols-outlined text-gray-400") %>
-        <p class="text-gray-600 font-bold text-sm ml-1">
-          <span class="text-gray-500 font-normal">(Liked by <%= pluralize(@item.likes.count, "person") %>)</span>
-        </p>
         <% if @show_controls %>
           <%= link_to edit_menu_section_item_path(@item.section.menu, @item.section, @item), class: "ml-3 text-sm font-medium text-gray-700 ", data: {turbo_frame: "modal"}, title: "Edit Menu Item" do %>
             <%= content_tag(:span, :edit, class: "material-symbols-outlined  text-gray-400") %>
